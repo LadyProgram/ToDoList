@@ -14,7 +14,7 @@ class DatabaseManager(context: Context) : SQLiteOpenHelper(context,DATABASE_NAME
             "CREATE TABLE ${Task.TABLE_NAME} (" +
                     "${Task.COLUMN_NAME_ID} INTERGER PRIMARY KEY," +
                     "${Task.COLUMN_NAME_TITLE} TEXT," +
-                    "${Task.COLUMN_NAME_DONE} TEXT)"
+                    "${Task.COLUMN_NAME_DONE} BOOLEAN)"
 
         private const val SQL_DROP_TABLE_TASK = "DROP TABLE IF EXISTS ${Task.TABLE_NAME}"
     }
