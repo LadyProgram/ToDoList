@@ -1,9 +1,10 @@
-package com.ladyprogram.todolist
+package com.ladyprogram.todolist.data
 
 class Task (
     val id: Long,
     val title: String,
-    val done: Boolean
+    val done: Boolean = false
+    // Al poner = false coge ese parámetro por defecto
 ) {
 
 

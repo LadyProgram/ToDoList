@@ -1,10 +1,14 @@
-package com.ladyprogram.todolist
+package com.ladyprogram.todolist.utils
 
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import com.ladyprogram.todolist.data.Task
 
-class DatabaseManager(context: Context) : SQLiteOpenHelper(context,DATABASE_NAME,null,DATABASE_VERSION) {
+class DatabaseManager(context: Context) : SQLiteOpenHelper(context,
+    DATABASE_NAME,null,
+    DATABASE_VERSION
+) {
 
     companion object {
         const val DATABASE_NAME = "todolist.db"

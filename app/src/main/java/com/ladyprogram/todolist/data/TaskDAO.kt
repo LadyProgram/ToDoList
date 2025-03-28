@@ -1,8 +1,9 @@
-package com.ladyprogram.todolist
+package com.ladyprogram.todolist.data
 
 import android.content.ContentValues
 import android.content.Context
 import android.util.Log
+import com.ladyprogram.todolist.utils.DatabaseManager
 
 class TaskDAO(context: Context) {
 
