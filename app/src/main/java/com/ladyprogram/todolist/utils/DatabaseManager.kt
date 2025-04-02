@@ -16,7 +16,7 @@ class DatabaseManager(context: Context) : SQLiteOpenHelper(context,
 
         private const val SQL_CREATE_TABLE_TASK =
             "CREATE TABLE ${Task.TABLE_NAME} (" +
-                    "${Task.COLUMN_NAME_ID} INTERGER PRIMARY KEY," +
+                    "${Task.COLUMN_NAME_ID} INTEGER PRIMARY KEY AUTOINCREMENT," +
                     "${Task.COLUMN_NAME_TITLE} TEXT," +
                     "${Task.COLUMN_NAME_DONE} BOOLEAN)"
 

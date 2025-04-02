@@ -62,7 +62,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun checkTask(position: Int) {
-        var task = taskList[position]
+        val task = taskList[position]
 
         task.done = !task.done
         taskDAO.update(task)
@@ -83,7 +83,7 @@ class MainActivity : AppCompatActivity() {
         AlertDialog.Builder(this)
             .setTitle("Delete task")
             .setMessage("Are you sure you want to delete this task?")
-            .setPositiveButton(android.R.string.ok) {_, _ ->
+            .setPositiveButton(android.R.string.ok) { _, _ ->
                 taskDAO.delete(task)
                 refreshData()
             }

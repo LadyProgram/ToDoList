@@ -26,6 +26,4 @@
         app:icon="@drawable/ic_delete"
         app:iconTint="@color/delete"/>
 
-
-
 </LinearLayout>
