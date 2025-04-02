@@ -3,12 +3,20 @@ package com.ladyprogram.todolist.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.ladyprogram.todolist.data.Task
 import com.ladyprogram.todolist.databinding.ItemTaskBinding
+import com.ladyprogram.todolist.utils.addStrikethrough
 
 
-class TaskAdapter(var items: List<Task>, val onClick: (Int) -> Unit) : RecyclerView.Adapter<TaskViewHolder>() {
+class TaskAdapter(
+    var items: List<Task>,
+    val onClick: (Int) -> Unit,
+    val onDelete: (Int) -> Unit,
+    val onCheck: (Int) -> Unit
+//) : RecyclerView.Adapter<TaskViewHolder>() {
+) : Adapter<TaskViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
         val binding = ItemTaskBinding.inflate(LayoutInflater.from(parent.context),parent,false)
@@ -25,15 +33,21 @@ class TaskAdapter(var items: List<Task>, val onClick: (Int) -> Unit) : RecyclerV
         holder.itemView.setOnClickListener {
             onClick(position)
         }
+        holder.binding.deleteButton.setOnClickListener {
+            onDelete(position)
+        }
+        holder.binding.doneCheckBox.setOnCheckedChangeListener { _, _ ->
+            if (holder.binding.doneCheckBox.isPressed) {
+                onCheck(position)
+            }
+        }
     }
 
     fun updateItems(items: List<Task>) {
         this.items = items
         notifyDataSetChanged()
     }
-
 }
-
 
 class TaskViewHolder(val binding: ItemTaskBinding) : ViewHolder(binding.root) {
 
@@ -41,8 +55,11 @@ class TaskViewHolder(val binding: ItemTaskBinding) : ViewHolder(binding.root) {
     //val pictureImageView: ImageView = view.findViewById(R.id.pictureImageView)
 
     fun render(task: Task) {
-        binding.titleTextView.text = task.title
+        if (task.done) {
+            binding.titleTextView.text = task.title.addStrikethrough()
+        } else {
+            binding.titleTextView.text = task.title
+        }
         binding.doneCheckBox.isChecked = task.done
     }
-
 }
